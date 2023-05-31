@@ -29,26 +29,7 @@ class WebViewApp extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white),
                       onPressed: () async {
-                        //Once you click on the button Connectivity package checks Connectivity
-                        var result = await Connectivity().checkConnectivity();
-                        if (result == ConnectivityResult.mobile) {
-                          showToast(
-                              "You are connected to Mobile data"); //Mobile Data check
-                        } else if (result == ConnectivityResult.wifi) {
-                          showToast("You are connected to wifi"); //Wifi check
-                        } else if (result == ConnectivityResult.ethernet) {
-                          showToast(
-                              "Your connection is from wired cable"); //Wired cable check
-                        } else if (result == ConnectivityResult.bluetooth) {
-                          showToast(
-                              "You are connected to Bluetooth"); //Bluetooth check
-                        } else if (result == ConnectivityResult.other) {
-                          showToast(
-                              "You are connected to other Device"); //Any other output devices check
-                        } else if (result == ConnectivityResult.none) {
-                          showToast(
-                              "There is no connection"); //if there is nothing connected
-                        }
+                        checkConnectivity();
                       },
                       child: const Text(
                         "Check Connectivity",
@@ -67,4 +48,23 @@ class WebViewApp extends StatelessWidget {
       ),
     );
   }
+  void checkConnectivity()async {var result = await Connectivity().checkConnectivity();
+  if (result == ConnectivityResult.mobile) {
+    showToast(
+        "You are connected to Mobile data"); //Mobile Data check
+  } else if (result == ConnectivityResult.wifi) {
+    showToast("You are connected to wifi"); //Wifi check
+  } else if (result == ConnectivityResult.ethernet) {
+    showToast(
+        "Your connection is from wired cable"); //Wired cable check
+  } else if (result == ConnectivityResult.bluetooth) {
+    showToast(
+        "You are connected to Bluetooth"); //Bluetooth check
+  } else if (result == ConnectivityResult.other) {
+    showToast(
+        "You are connected to other Device"); //Any other output devices check
+  } else if (result == ConnectivityResult.none) {
+    showToast(
+        "There is no connection"); //if there is nothing connected
+  }}
 }
